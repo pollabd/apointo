@@ -163,23 +163,4 @@ docker-compose down -v
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
-
----
-
-## Support
-
-If you encounter any issues or have questions, feel free to open an issue or contact the maintainers.
-
----
-
-Enjoy building and running your MERN stack project with Docker! 🚀
-
----
-
-This README provides a comprehensive guide for anyone looking to set up and run your MERN project with Docker. Let me know if you need further customization! 😊
+😊
