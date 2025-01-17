@@ -1,18 +1,53 @@
-# MERN Stack Project with Docker
+# Full Stack Doctor Appointment Booking System (MERN Stack with Docker)
 
-This is a MERN (MongoDB, Express.js, React, Node.js) stack project that is containerized using Docker. The project includes a frontend (React), a backend (Node.js with Express), and a MongoDB database.
+This is a **Full Stack Doctor Appointment Booking System**, built using the **MERN Stack** (MongoDB, Express.js, React, Node.js) and containerized with **Docker**. The system is designed for real-world scenarios, providing **role-based authentication** for **Patients**, **Doctors**, and **Admins**.
+
+The system includes:
+
+- **Frontend**: React.js
+- **Backend**: Node.js with Express.js
+- **Database**: MongoDB
+- **Containerization**: Docker and Docker Compose
+
+---
 
 ## Table of Contents
 
-1. [Prerequisites](#prerequisites)
-2. [Project Structure](#project-structure)
-3. [Setup Instructions](#setup-instructions)
-4. [Running the Project](#running-the-project)
-5. [Accessing the Application](#accessing-the-application)
-6. [Stopping the Project](#stopping-the-project)
-7. [Removing Containers and Volumes](#removing-containers-and-volumes)
-8. [Technologies Used](#technologies-used)
-9. [License](#license)
+1. [Project Features](#project-features)
+2. [Prerequisites](#prerequisites)
+3. [Project Structure](#project-structure)
+4. [Setup Instructions](#setup-instructions)
+5. [Running the Project](#running-the-project)
+6. [Accessing the Application](#accessing-the-application)
+7. [Stopping the Project](#stopping-the-project)
+8. [Removing Containers and Volumes](#removing-containers-and-volumes)
+9. [Technologies Used](#technologies-used)
+10. [License](#license)
+
+---
+
+## Project Features
+
+### **Role-Based Authentication**
+
+1. **Patients**:
+   - Register, log in, and book appointments with doctors.
+   - View and manage booked appointments through a personalized dashboard.
+2. **Doctors**:
+   - Log in to view appointment schedules and track earnings.
+   - Update profile information from a dedicated doctor dashboard.
+3. **Admins**:
+   - Manage all appointments.
+   - Oversee doctor profiles and perform administrative tasks.
+
+### **Other Features**
+
+- **Secure Authentication**: Role-based access control using JWT.
+- **Responsive UI**: Built with React.js for an intuitive user experience.
+- **Dashboard Management**: Custom dashboards for each user role.
+- **Appointment Management**: Easy appointment booking and tracking.
+- **Profile Management**: Doctors and Admins can update their profiles.
+- **Earnings Tracking**: Doctors can view their revenue from appointments.
 
 ---
 
@@ -30,7 +65,7 @@ Before you begin, ensure you have the following installed:
 ## Project Structure
 
 ```
-mern-project/
+appointment-booking-system/
 ├── frontend/
 │   ├── Dockerfile
 │   ├── nginx.conf
@@ -49,26 +84,29 @@ mern-project/
 
 ## Setup Instructions
 
-1. **Clone the Repository** (if applicable):
+1. **Clone the Repository**:
 
    ```bash
    git clone https://github.com/pollabd/apointo.git
    cd apointo
    ```
 
-2. **Ensure Docker and Docker Compose are Installed**:
-   Verify Docker and Docker Compose are installed by running:
+2. **Verify Docker Installation**:
+
+   Ensure Docker and Docker Compose are installed:
 
    ```bash
    docker --version
    docker-compose --version
    ```
 
-3. **Environment Variables**:
-   - If your backend requires environment variables (e.g., `MONGO_URI`), create a `.env` file in the `server` folder.
+3. **Configure Environment Variables**:
+
+   - Create a `.env` file in the `server` folder if needed.
    - Example `.env` file:
+
      ```env
-     MONGO_URI=mongodb://mongo:27017/mernapp
+     MONGO_URI=mongodb://mongo:27017/appointment-system
      NODE_ENV=production
      ```
 
@@ -77,43 +115,41 @@ mern-project/
 ## Running the Project
 
 1. **Build and Start the Containers**:
-   Run the following command in the root directory of the project:
 
    ```bash
    docker-compose up --build
    ```
 
-   This will:
+   This command will:
 
-   - Build the frontend and backend Docker images.
-   - Start the MongoDB container.
-   - Run the frontend and backend services.
+   - Build and start the frontend, backend, and MongoDB containers.
+   - Automatically link the services.
 
 2. **Monitor Logs**:
-   You can monitor the logs of all services in the terminal where you ran the above command.
+
+   Check logs for all services in the terminal where the above command was run.
 
 ---
 
 ## Accessing the Application
 
-Once the containers are running, you can access the application as follows:
-
-- **Frontend (React)**:
-  Open your browser and navigate to:
+- **Frontend (Patient, Doctor, Admin Portals)**:
+  Open your browser and go to:
 
   ```
   http://localhost:3000
   ```
 
-- **Backend (API)**:
-  The backend API will be available at:
+- **Backend API**:
+  Access the backend API at:
 
   ```
   http://localhost:5000
   ```
 
 - **MongoDB**:
-  MongoDB will be running on:
+  MongoDB will be available on:
+
   ```
   mongodb://localhost:27017
   ```
@@ -122,7 +158,7 @@ Once the containers are running, you can access the application as follows:
 
 ## Stopping the Project
 
-To stop the running containers, press `Ctrl + C` in the terminal where the containers are running, or run:
+To stop the running containers, use:
 
 ```bash
 docker-compose down
@@ -132,7 +168,7 @@ docker-compose down
 
 ## Removing Containers and Volumes
 
-To stop the containers and remove all associated volumes (including MongoDB data), run:
+To stop containers and delete associated volumes (including MongoDB data), run:
 
 ```bash
 docker-compose down -v
@@ -142,21 +178,22 @@ docker-compose down -v
 
 ## Technologies Used
 
-- **Frontend**:
+### **Frontend**:
 
-  - React
-  - Tailwind CSS (optional, if used)
-  - Nginx (for serving the React app in production)
+- React.js
+- Tailwind CSS (optional, if used)
+- Nginx (for serving the React app in production)
 
-- **Backend**:
+### **Backend**:
 
-  - Node.js
-  - Express.js
-  - MongoDB
+- Node.js
+- Express.js
+- MongoDB
 
-- **DevOps**:
-  - Docker
-  - Docker Compose
+### **DevOps**:
+
+- Docker
+- Docker Compose
 
 ---
 
