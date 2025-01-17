@@ -5,7 +5,7 @@ const NotFoundPage = () => {
 
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-500 to-indigo-600">
-      <div className="text-center p-8 bg-white/10 backdrop-blur-md rounded-2xl shadow-2xl border border-white/20">
+      <div className="text-center">
         <h1 className="text-9xl font-bold text-white mb-4">404</h1>
         <p className="text-2xl font-medium text-white mb-8">
           Oops! The page you&apos;re looking for doesn&apos;t exist.

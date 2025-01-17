@@ -8,10 +8,17 @@ import MyAppointments from "./pages/MyAppointments";
 import Doctors from "./pages/Doctors";
 import Appointment from "./pages/Appointment";
 import NotFoundPage from "./pages/NotFoundPage";
+import Navbar from "./components/Navbar";
 
 const App = () => {
   return (
     <div className="mx-4 sm:mx-[10%]">
+      {/* Navbar */}
+
+      <Navbar />
+
+      {/* Routes */}
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/doctors" element={<Doctors />} />
