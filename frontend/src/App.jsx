@@ -9,6 +9,7 @@ import Doctors from "./pages/Doctors";
 import Appointment from "./pages/Appointment";
 import NotFoundPage from "./pages/NotFoundPage";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
@@ -31,6 +32,9 @@ const App = () => {
         <Route path="/appointment/:docId" element={<Appointment />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 };
