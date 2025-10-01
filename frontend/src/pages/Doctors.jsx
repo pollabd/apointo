@@ -114,7 +114,10 @@ const Doctors = () => {
         <div className="md:col-span-5 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
           {filterDoc.map((doctor, index) => (
             <div
-              onClick={() => navigate(`/appointment/${doctor._id}`)}
+              onClick={() => {
+                navigate(`/appointment/${doctor._id}`);
+                scrollTo(0, 0);
+              }}
               className="border border-indigo-200 rounded-xl overflow-hidden cursor-pointer hover:translate-y-[-10px] transition-all duration-500"
               key={index}
             >
