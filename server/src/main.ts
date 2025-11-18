@@ -1,6 +1,6 @@
-import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
-import { AppModule } from './app.module';
+import { NestFactory } from "@nestjs/core";
+import { ValidationPipe } from "@nestjs/common";
+import { AppModule } from "./app.module";
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -8,17 +8,18 @@ async function bootstrap() {
   // Enable CORS
   app.enableCors({
     origin: [
-      process.env.FRONTEND_URL || 'http://localhost:3000',
-      process.env.ADMIN_URL || 'http://localhost:3001',
-      'http://localhost:5173',
-      'http://localhost:5174',
-      'http://localhost:5175',
+      process.env.FRONTEND_URL || "http://localhost:3000",
+      process.env.ADMIN_URL || "http://localhost:3001",
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "http://localhost:5175",
+      "https://apointo.vercel.app/",
     ],
     credentials: true,
   });
 
   // Global prefix
-  app.setGlobalPrefix('api');
+  app.setGlobalPrefix("api");
 
   // Enable validation
   app.useGlobalPipes(
@@ -26,14 +27,14 @@ async function bootstrap() {
       whitelist: true,
       forbidNonWhitelisted: true,
       transform: true,
-    }),
+    })
   );
 
   const port = process.env.PORT || 5000;
   await app.listen(port);
-  
+
   console.log(`🚀 Server is running on: http://localhost:${port}/api`);
-  console.log(`📚 Environment: ${process.env.NODE_ENV || 'development'}`);
+  console.log(`📚 Environment: ${process.env.NODE_ENV || "development"}`);
 }
 
 bootstrap();
