@@ -2,7 +2,7 @@ import React from "react";
 import { assets } from "../assets/assets";
 import { useNavigate } from "react-router-dom";
 
-export const Banner = () => {
+const Banner = () => {
   const navigate = useNavigate();
   return (
     <div className="flex bg-indigo-600 rounded-lg px-6 sm:px-10 lg:px-12 my-20 md:mx-10">
@@ -34,3 +34,5 @@ export const Banner = () => {
     </div>
   );
 };
+
+export default Banner;

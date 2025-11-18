@@ -1,0 +1,112 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  PATIENT
+  DOCTOR
+  ADMIN
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
+enum Speciality {
+  General_physician
+  Gynecologist
+  Dermatologist
+  Pediatricians
+  Neurologist
+  Gastroenterologist
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  COMPLETED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  REFUNDED
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  password      String
+  name          String
+  phone         String?
+  role          UserRole  @default(PATIENT)
+  image         String?
+  address       Json?
+  gender        Gender?
+  dateOfBirth   DateTime?
+  isActive      Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  // Relations
+  doctor        Doctor?
+  appointments  Appointment[] @relation("PatientAppointments")
+
+  @@map("users")
+}
+
+model Doctor {
+  id           String      @id @default(uuid())
+  userId       String      @unique
+  speciality   Speciality
+  degree       String
+  experience   String
+  about        String      @db.Text
+  fees         Decimal     @db.Decimal(10, 2)
+  addressLine1 String
+  addressLine2 String
+  available    Boolean     @default(true)
+  isApproved   Boolean     @default(false)
+  rating       Decimal     @default(0) @db.Decimal(3, 2)
+  reviewCount  Int         @default(0)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+
+  // Relations
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  appointments Appointment[]
+
+  @@map("doctors")
+}
+
+model Appointment {
+  id                 String            @id @default(uuid())
+  patientId          String
+  doctorId           String
+  appointmentDate    DateTime
+  timeSlot           String
+  status             AppointmentStatus @default(PENDING)
+  paymentStatus      PaymentStatus     @default(UNPAID)
+  paymentAmount      Decimal           @db.Decimal(10, 2)
+  paymentIntentId    String?
+  cancellationReason String?
+  createdAt          DateTime          @default(now())
+  updatedAt          DateTime          @updatedAt
+
+  // Relations
+  patient            User              @relation("PatientAppointments", fields: [patientId], references: [id], onDelete: Cascade)
+  doctor             Doctor            @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+
+  @@map("appointments")
+}
